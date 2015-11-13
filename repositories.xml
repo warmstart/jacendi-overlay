@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+
+<repositories xmlns="" vesrion="1.0">
+	<repo quality="experimental" status="unofficial">
+		<name><![CDATA[jacendi-overlay]]></name>
+		<description lang="en"><![CDATA[Jacendi's Gentoo Overlay]]></description>
+		<homepage>https://github.com/Jacendi/jacendi-overlay</homepage>
+		<owner type="person">
+			<email>jacendi@protonmail.com</email>
+			<name><![CDATA[Vladimir Gavrilov]]></name>
+		</owner>
+		<source type="git">git://github.com/Jacendi/jacendi-overlay.git</source>
+		<feed>https://github.com/Jacendi/jacendi-overlay/commits/master.atom</feed>
+	</repo>
+</repositories>
