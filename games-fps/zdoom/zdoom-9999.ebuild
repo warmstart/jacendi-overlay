@@ -26,7 +26,7 @@ DEPEND="
 		media-libs/flac
 		virtual/jpeg
 		media-sound/fluidsynth
-		soundfont? ( media-sound/fluid-sound )"
+		soundfont? ( media-sound/fluid-soundfont )"
 
 RDEPEND="${DEPEND}"
 
