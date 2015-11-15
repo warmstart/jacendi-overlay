@@ -1,5 +1,6 @@
-games-utils/slade3
+games-util/slade3
 games-fps/gzdoom
 games-fps/zdoom
-games-utils/zdbsp
-games-utils/acc
+games-util/zdbsp
+games-util/acc
+games-util/udmf-convert
