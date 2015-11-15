@@ -71,10 +71,5 @@ pkg_postinst() {
 	elog
 	elog "To play, simply run:"
 	elog "   gzdoom"
-	elog
-	if ! has_version media-sound/fluid-soundfont; then
-		ewarn "You may need to install media-sound/fluid-soundfont"
-		ewarn "for fluidsynth to play music, depending on your sound card."
-	fi
 	elog "See /usr/share/doc/${P}/zdoom.txt.* for more info"
 }
