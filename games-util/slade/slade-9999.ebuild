@@ -32,7 +32,7 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	# Use default game data path.
-	sed -ie "s:wxStandardPaths\:\:Get().GetDataDir();:\"${GAMES_DATADIR}/slade\";:" src/MainApp.cpp || die
+	sed -ie "s:wxStandardPaths\:\:Get().GetDataDir();:\"${GAMES_DATADIR}/slade\";:" src/Application/MainApp.cpp || die
 }
 
 src_configure() {
