@@ -20,7 +20,7 @@ DEPEND="
 		app-arch/bzip2
 
 		virtual/opengl
-		x11-libs/wxGTK:3.0[opengl]
+		x11-libs/wxGTK:3.0[opengl,webkit]
 		>=media-libs/libsfml-2.0
 		media-libs/freeimage
 		>=media-sound/fluidsynth-1.1.3
