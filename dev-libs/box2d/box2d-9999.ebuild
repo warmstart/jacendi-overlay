@@ -20,6 +20,8 @@ DEPEND="media-libs/freeglut
 	x11-libs/libXi"
 RDEPEND="${DEPEND}"
 
+S="${WORKDIR}/Box2D"
+
 src_configure()
 {
     mycmakeargs="${mycmakeargs} -DBOX2D_BUILD_SHARED=ON"
