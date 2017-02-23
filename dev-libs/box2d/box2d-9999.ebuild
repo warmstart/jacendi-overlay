@@ -14,9 +14,9 @@ EGIT_REPO_URI="https://github.com/erincatto/Box2D.git"
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="-static"
+IUSE="-static -examples"
 
-DEPEND="media-libs/freeglut
+DEPEND="media-libs/glfw
 	x11-libs/libXi"
 RDEPEND="${DEPEND}"
 
@@ -25,7 +25,12 @@ S="${WORKDIR}/${PN}-${PV}/Box2D"
 src_configure()
 {
 	local mycmakeargs=(
-                $(cmake-utils_useno static BOX2D_BUILD_SHARED)
+                $(cmake-utils_use_with static BOX2D_BUILD_STATIC)
+		$(cmake-utils_use_with examples BOX2D_BUILD_EXAMPLES)
+
+		-DBOX2D_INSTALL=ON
+		-DBOX2D_BUILD_SHARED=ON
+		-DCMAKE_BUILD_TYPE=Release
         )
 	
     cmake-utils_src_configure
