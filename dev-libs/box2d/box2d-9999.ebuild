@@ -20,7 +20,7 @@ DEPEND="media-libs/freeglut
 	x11-libs/libXi"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/Box2D"
+S="${WORKDIR}/${PN}-${PV}/Box2D"
 
 src_configure()
 {
