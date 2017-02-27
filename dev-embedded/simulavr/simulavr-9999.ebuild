@@ -37,6 +37,9 @@ pkg-setup()
         eerror "${PN} requires avr-binutils to be installed"
         eerror "You can install it by running:"
         eerror " crossdev -t avr"
+	eerror "Gentoo bug #147155 hot-fix:"
+	eerror "Create a symlink to /usr/avr/lib/ldscripts"
+        eerror "ln -s /usr/${CHOST}/avr/lib/ldscripts /usr/avr/lib/ldscripts"
         die "Missing avr-binutils"
     fi
 }
