@@ -2,10 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit git-2 distutils eutils
+EAPI=6
 
-PYTHON_DEPEND="2:2.7"
+PYTHON_COMPAT=( python2_7 )
+DISTUTILS_SINGLE_IMPL=1
+
+inherit git-r3 distutils-r1 eutils
 
 DESCRIPTION="Translate a resistor color codes into readable value"
 HOMEPAGE="https://github.com/roroid/gResistor2"
@@ -16,18 +18,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="
-		dev-python/pygobject:3
-		dev-python/lxml"
+DEPEND="dev-python/pygobject:3
+	dev-python/lxml"
 RDEPEND="${DEPEND}"
 
-pkg_setup() {
-	python_set_active_version 2
-	python_pkg_setup
+src_prepare()
+{
+	distutils-r1_src_prepare
 }
 
 src_install() {
-	distutils_src_install
+	distutils-r1_src_install
 	newicon icon.svg ${PN}.svg
 	domenu ${PN}.desktop
 }
