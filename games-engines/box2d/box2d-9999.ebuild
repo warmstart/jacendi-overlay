@@ -19,12 +19,11 @@ IUSE="-static -doc"
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-CXXFLAGS="${CXXFLAGS} -std=c++11"
-
 S="${WORKDIR}/${PN}-${PV}/Box2D"
 
 src_configure()
 {
+	append-cxxflags "-std=c++11"
 	local mycmakeargs=(
                 $(cmake-utils_use_with static BOX2D_BUILD_STATIC)
 		$(cmake-utils_use_with doc BOX2D_INSTALL_DOC)
