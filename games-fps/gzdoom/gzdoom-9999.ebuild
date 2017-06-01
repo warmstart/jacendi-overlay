@@ -21,7 +21,7 @@ DEPEND="
 				media-sound/fluid-soundfont
 		)
 
-		gtk? ( x11-libs/gtk+:3 )
+		gtk3? ( x11-libs/gtk+:3 )
 		media-libs/flac
 		media-libs/openal
 		virtual/glu
@@ -41,7 +41,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_no cpu_flags_x86_mmx ASM)
-		$(cmake-utils_use_no gtk GTK)
+		$(cmake-utils_use_no gtk3 GTK)
 		$(cmake-utils_use_use fluidsynth FLUIDSYNTH)
 		-DNO_FMOD=ON
 	)
