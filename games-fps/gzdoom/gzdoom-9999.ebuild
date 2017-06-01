@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/coelckers/gzdoom.git"
 LICENSE="DOOMLIC BUILDLIC BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="cpu_flags_x86_mmx +gtk +fluidsynth +soundfont"
+IUSE="cpu_flags_x86_mmx +gtk +fluidsynth +soundfont +opengl"
 
 DEPEND="
 		soundfont? (
