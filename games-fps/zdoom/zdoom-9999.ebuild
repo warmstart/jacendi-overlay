@@ -13,11 +13,11 @@ EGIT_REPO_URI="https://github.com/rheit/zdoom.git"
 LICENSE="DOOMLIC BUILDLIC BSD"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="cpu_flags_x86_mmx +gtk +soundfont"
+IUSE="cpu_flags_x86_mmx +gtk3 +soundfont"
 
 DEPEND="
 		cpu_flags_x86_mmx? ( || ( dev-lang/nasm dev-lang/yasm ) )
-		gtk? ( x11-libs/gtk+:2 )
+		gtk3? ( x11-libs/gtk+:3 )
 		app-arch/bzip2
 		sys-libs/zlib
 		x11-libs/libXcursor
@@ -37,7 +37,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_no cpu_flags_x86_mmx ASM)
-		$(cmake-utils_use_no gtk GTK)
+		$(cmake-utils_use_no gtk3 GTK)
 		
 		# Disable FMOD, use OpenAL instead
 		-DNO_FMOD=ON
@@ -53,8 +53,6 @@ src_install() {
 	dogamesbin "${CMAKE_BUILD_DIR}/${PN}" || die "dogamesbin failed"
 	insinto "${GAMES_DATADIR}/doom-data"
 	doins "${CMAKE_BUILD_DIR}/${PN}.pk3" || die "doins failed"
-	dodoc docs/commands.txt
-	dohtml docs/console.{css,html}
 	prepgamesdirs
 }
 
