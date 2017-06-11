@@ -1,43 +1,40 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-
 EAPI=5
-
-inherit games wxwidgets cmake-utils git-2
+inherit games cmake-utils wxwidgets git-r3
 
 DESCRIPTION="It's a Doom editor"
 HOMEPAGE="http://slade.mancubus.net/"
-EGIT_REPO_URI="https://github.com/sirjuddington/SLADE.git"
+EGIT_REPO_URI="https://github.com/Jacendi/SLADE.git"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="
-		sys-libs/zlib
-		app-arch/bzip2
-
-		virtual/opengl
-		x11-libs/wxGTK:3.0[opengl,webkit]
+DEPEND="x11-libs/wxGTK:3.0[opengl,gstreamer]
 		>=media-libs/libsfml-2.0
 		media-libs/freeimage
 		>=media-sound/fluidsynth-1.1.3
 		media-libs/ftgl
-		>=media-libs/glew-1.10.0-r2
-		media-libs/ftgl
+		media-libs/glew
 		media-libs/libmodplug"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
 	# Use default game data path.
-	sed -ie "s:wxStandardPaths\:\:Get().GetDataDir();:\"${GAMES_DATADIR}/slade\";:" src/Application/MainApp.cpp || die
+	sed -ie "s:wxStandardPaths\:\:Get().GetDataDir();:\"${GAMES_DATADIR}/slade\";:" src/Application/App.cpp || die
 }
 
 src_configure() {
 	WX_GTK_VER="3.0"
-	need-wxwidgets unicode
+	#need-wxwidgets unicode
+
+	local mycmakeargs=(
+		-DNO_WEBVIEW=ON
+	)
+
 	cmake-utils_src_configure
 }
 
