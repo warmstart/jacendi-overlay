@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,10 +32,11 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	# Use default game data path
 	sed -i \
 		-e "s:/usr/local/share/:${GAMES_DATADIR}/doom-data/:" \
 		src/posix/i_system.h || die
+	sed -i -e '/SetValueForKey ("Path", "\/usr\/share\/games\/doom", true);/ a \\t\tSetValueForKey ("Path", "/usr/share/doom-data", true);' \
+		src/gameconfigfile.cpp || die
 }
 
 src_configure() {
@@ -43,7 +44,6 @@ src_configure() {
 		$(cmake-utils_use_no cpu_flags_x86_mmx ASM)
 		$(cmake-utils_use_no gtk3 GTK)
 		$(cmake-utils_use_use fluidsynth FLUIDSYNTH)
-		-DNO_FMOD=ON
 	)
 
 	cmake-utils_src_configure
