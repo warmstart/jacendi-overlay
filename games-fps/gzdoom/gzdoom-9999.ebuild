@@ -32,8 +32,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	sed -i -e "s:/usr/local/share/:/usr/share/doom-data/:" src/posix/i_system.h
 	sed -i -e '/SetValueForKey ("Path", "\/usr\/share\/games\/doom", true);/ a \\t\tSetValueForKey ("Path", "/usr/share/doom-data", true);' \
-		src/gameconfigfile.cpp || die
+		src/gameconfigfile.cpp
+	eapply_user
 }
 
 src_configure() {
