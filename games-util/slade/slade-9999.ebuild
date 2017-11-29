@@ -6,7 +6,7 @@ inherit games cmake-utils wxwidgets git-r3
 
 DESCRIPTION="It's a Doom editor"
 HOMEPAGE="http://slade.mancubus.net/"
-EGIT_REPO_URI="https://github.com/Jacendi/SLADE.git"
+EGIT_REPO_URI="https://github.com/sirjuddington/SLADE.git"
 
 LICENSE="GPL-2"
 SLOT="0"
