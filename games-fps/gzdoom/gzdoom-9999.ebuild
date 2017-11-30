@@ -31,13 +31,6 @@ DEPEND="
 		cpu_flags_x86_mmx? ( || ( dev-lang/nasm dev-lang/yasm ) )"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	sed -i -e "s:/usr/local/share/:/usr/share/doom-data/:" src/posix/i_system.h
-	sed -i -e '/SetValueForKey ("Path", "\/usr\/share\/games\/doom", true);/ a \\t\tSetValueForKey ("Path", "/usr/share/doom-data", true);' \
-		src/gameconfigfile.cpp
-	eapply_user
-}
-
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_no cpu_flags_x86_mmx ASM)
@@ -52,7 +45,7 @@ src_install() {
 	cd "${CMAKE_BUILD_DIR}" || die
 	dogamesbin ${PN} || die
 
-	insinto "${GAMES_DATADIR}/doom-data"
+	insinto "${GAMES_DATADIR}/doom"
 	doins ${PN}.pk3
 
 	prepgamesdirs
