@@ -23,7 +23,7 @@ IUSE="+alsa i3 mpd curl network"
 RDEPEND="
         x11-libs/libxcb[xkb]
         x11-libs/cairo[xcb]
-        x11-proto/xcb-proto
+        x11-base/xcb-proto
         x11-libs/xcb-util-wm
         x11-libs/xcb-util-image
 
